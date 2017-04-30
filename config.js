@@ -39,4 +39,20 @@ exports.sse = {
 
 exports.szse = {
   project: 'http://www.szse.cn/szseWeb/FrontController.szse',
+  select: [
+    'audit_name',
+    'short_name',
+    'bond_type',
+    'plan_issue_amount',
+    'audit_status',
+    'publish_date',
+  ],
+  translate: {
+    short_name: '承销商/管理人',
+    audit_name: '债券名称',
+    plan_issue_amount: '拟发行金额（亿元）',
+    bond_type: '债券品种',
+    audit_status: '项目状态',
+    publish_date: '更新日期',
+  },
 };

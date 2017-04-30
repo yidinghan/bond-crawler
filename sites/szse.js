@@ -2,6 +2,7 @@ const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 const rq = require('request-promise');
 const cheerio = require('cheerio');
+const zipObject = require('lodash.zipobject');
 
 const config = require('../config').szse;
 const toCsv = require('../to_csv');
@@ -24,6 +25,7 @@ const getApiData = () => {
       REPORT_ACTION: 'navigate',
     },
     transform: body => cheerio.load(body),
+    // encoding: 'utf-8',
   };
 
   return rq(opts);
@@ -32,17 +34,43 @@ const getApiData = () => {
 const getData = ($body) => {
   const selector = '#REPORTID_tab1 > tr';
 
-  return Array.from($body(selector)).map((tr) => {
-    const $tr = cheerio.load(tr);
-    return Array.from($tr('td')).map((td) => {
-      const $td = cheerio.load(td);
-      return $td.text();
-    });
-  });
+  return Array.from($body(selector))
+    .map((tr) => {
+      const $tr = cheerio.load(tr);
+      const informationArray = Array.from($tr('td'))
+        .map((td) => {
+          const $td = cheerio.load(td);
+          return $td.text();
+        })
+        .slice(1);
+
+      return zipObject(config.select, informationArray);
+    })
+    .slice(1);
 };
+
+const formatData = data =>
+  data.map((information) => {
+    const { short_name } = information;
+
+    information.short_name = short_name.replace(/,/g, ';');
+    // hard code
+    // cuz only request this kind of type in api
+    information.bond_type = '小公募';
+
+    return information;
+  });
 
 exports.run = async () => {
   const $body = await getApiData();
-  const [, ...data] = getData($body);
-  console.log(data);
+  const data = formatData(getData($body));
+
+  const csv = toCsv(data, {
+    select: config.select,
+    translate: config.translate,
+  });
+
+  await fs.writeFileAsync('szse.csv', csv);
+
+  return 0;
 };
