@@ -1,3 +1,1 @@
-exports.run = () => {
-  
-};
+exports.run = () => {};

@@ -1,3 +1,7 @@
+# tmp files
+sse.csv
+szse.csv
+
 # Logs
 logs
 *.log
