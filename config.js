@@ -17,9 +17,8 @@ exports.sse = {
     LIST1: '大连万达商业地产股份有限公司',
     PLAN_ISSUE_AMOUNT: '拟发行金额（亿元）',
     LIST2: '中信建投证券股份有限公司,招商证券股份有限公司,华融证券股份有限公司',
-    // cuz only request this kind of type in api
-    BOND_TYPE: '小公募',
-    AUDIT_STATUS: '3',
+    BOND_TYPE: '债券品种',
+    AUDIT_STATUS: '项目状态',
     WEN_HAO: '-',
     SEC_NAME: ' ',
     LIST22: '78170345-3,19223854-9,71093501-1',

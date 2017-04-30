@@ -9,7 +9,15 @@ module.exports = (data = [], payload = {}) => {
     keys = Object.keys(head);
   }
 
-  const headLine = keys.join();
+  let headLine = '';
+  if (payload.translate) {
+    headLine = keys
+      .map(key => payload.translate[key])
+      .join();
+  } else {
+    headLine = keys.join();
+  }
+
   const tpl = template(keys.map(key => `<%= ${key} %>`).join());
 
   const csv = [headLine];

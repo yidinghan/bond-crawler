@@ -29,9 +29,12 @@ exports.run = async () => {
 
   result.forEach((information) => {
     const { AUDIT_STATUS, SHORT_NAME } = information;
+
     information.AUDIT_STATUS = config.audit_status_transfer[AUDIT_STATUS];
     information.SHORT_NAME = SHORT_NAME.replace(/,/g, ';');
-    information.BOND_TYPE = config.translate.BOND_TYPE;
+    // hard code
+    // cuz only request this kind of type in api
+    information.BOND_TYPE = '小公募';
   });
 
   const csv = toCsv(result, {
@@ -39,9 +42,7 @@ exports.run = async () => {
     translate: config.translate,
   });
 
-  console.log(csv);
-  const file = await fs.writeFileAsync('../sse.csv', csv);
-  console.log(file);
+  await fs.writeFileAsync('sse.csv', csv);
 
   return 0;
 };
