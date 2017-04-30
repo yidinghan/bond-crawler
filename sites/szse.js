@@ -21,8 +21,7 @@ const getApiData = () => {
       tab1PAGENO: 1,
       // tab1PAGECOUNT: 34,
       // tab1RECORDCOUNT: 340,
-      // tab1PAGESIZE: 10000,
-      tab1PAGESIZE: 5,
+      tab1PAGESIZE: 10000,
       REPORT_ACTION: 'navigate',
     },
     transform: (body) => {

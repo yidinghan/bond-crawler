@@ -38,9 +38,6 @@ const formatData = data =>
   });
 
 exports.run = async () => {
-  if (true) {
-    return 1;
-  }
   const { result } = await getApiData();
 
   const data = formatData(result);
