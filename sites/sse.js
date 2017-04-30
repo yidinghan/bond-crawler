@@ -12,8 +12,8 @@ const getApiData = () => {
       jsonCallBack: 'jsonpCallback39996',
       sqlId: 'COMMON_SSE_ZCZZQXMLB',
       bond_type: '0',
-      'pageHelp.pageSize': 10,
-      isPagination: 'true',
+      // 'pageHelp.pageSize': 10,
+      // isPagination: 'true',
     },
     headers: {
       Referer: 'http://bond.sse.com.cn/bridge/information/',
