@@ -24,10 +24,8 @@ const getApiData = () => {
   return rq(opts);
 };
 
-exports.run = async () => {
-  const { result } = await getApiData();
-
-  result.forEach((information) => {
+const formatData = data =>
+  data.map((information) => {
     const { AUDIT_STATUS, SHORT_NAME } = information;
 
     information.AUDIT_STATUS = config.audit_status_transfer[AUDIT_STATUS];
@@ -35,9 +33,18 @@ exports.run = async () => {
     // hard code
     // cuz only request this kind of type in api
     information.BOND_TYPE = '小公募';
+
+    return information;
   });
 
-  const csv = toCsv(result, {
+exports.run = async () => {
+  if (true) {
+    return 1;
+  }
+  const { result } = await getApiData();
+
+  const data = formatData(result);
+  const csv = toCsv(data, {
     select: config.select,
     translate: config.translate,
   });

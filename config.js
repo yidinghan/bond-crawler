@@ -38,5 +38,5 @@ exports.sse = {
 };
 
 exports.szse = {
-  project: 'http://www.szse.cn/main/ints/xmjdxx/xgm/',
+  project: 'http://www.szse.cn/szseWeb/FrontController.szse',
 };
