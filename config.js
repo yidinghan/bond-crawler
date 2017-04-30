@@ -22,7 +22,7 @@ exports.sse = {
     WEN_HAO: '-',
     SEC_NAME: ' ',
     LIST22: '78170345-3,19223854-9,71093501-1',
-    PUBLISH_DATE: '2017-04-28',
+    PUBLISH_DATE: '更新日期',
     LIST11: '74093396-5',
   },
   audit_status_transfer: {
