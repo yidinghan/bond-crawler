@@ -3,6 +3,7 @@ const fs = Promise.promisifyAll(require('fs'));
 const rq = require('request-promise');
 const cheerio = require('cheerio');
 const zipObject = require('lodash.zipobject');
+const iconv = require('iconv-lite');
 
 const config = require('../config').szse;
 const toCsv = require('../to_csv');
@@ -24,8 +25,12 @@ const getApiData = () => {
       tab1PAGESIZE: 5,
       REPORT_ACTION: 'navigate',
     },
-    transform: body => cheerio.load(body),
-    // encoding: 'utf-8',
+    transform: (body) => {
+      const utf8String = iconv.decode(body, 'gb2312');
+
+      return cheerio.load(utf8String);
+    },
+    encoding: null,
   };
 
   return rq(opts);
