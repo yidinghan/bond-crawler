@@ -1,3 +1,7 @@
+exports.s3 = {
+  bucket: 'bond-crawler',
+};
+
 exports.sse = {
   project: 'http://query.sse.com.cn/commonQuery.do',
   select: [

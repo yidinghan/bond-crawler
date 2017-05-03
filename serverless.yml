@@ -15,7 +15,7 @@ service: bond-crawler
 
 custom:
   # change this, so it's unique for your setup
-  bucket_name: ${self:provider.stage}-bondcrawler
+  bucket_name: bond-crawler
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -60,6 +60,7 @@ provider:
 package:
  include:
    - index.js
+   - config.js
    - package.json
    - sites/**
    - node_modules/**
