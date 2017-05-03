@@ -80,7 +80,7 @@ functions:
       - http:
           path: update
           method: put
-      - schedule: cron(5 * * * * *)
+      - schedule: cron(5 * * * ? *)
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
