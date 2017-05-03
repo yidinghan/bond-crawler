@@ -78,3 +78,17 @@ exports.run = async () => {
 
   return 0;
 };
+
+exports.run = () =>
+  getApiData()
+    .then(($body) => {
+      const data = formatData(getData($body));
+
+      const csv = toCsv(data, {
+        select: config.select,
+        translate: config.translate,
+      });
+
+      return fs.writeFileAsync('sse.csv', csv);
+    })
+    .return(0);

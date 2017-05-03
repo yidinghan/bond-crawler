@@ -37,16 +37,13 @@ const formatData = data =>
     return information;
   });
 
-exports.run = async () => {
-  const { result } = await getApiData();
+exports.run = () =>
+  getApiData().then(({ result }) => {
+    const data = formatData(result);
+    const csv = toCsv(data, {
+      select: config.select,
+      translate: config.translate,
+    });
 
-  const data = formatData(result);
-  const csv = toCsv(data, {
-    select: config.select,
-    translate: config.translate,
-  });
-
-  await fs.writeFileAsync('sse.csv', csv);
-
-  return 0;
-};
+    return fs.writeFileAsync('sse.csv', csv);
+  }).return(0);
