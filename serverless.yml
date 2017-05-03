@@ -68,12 +68,13 @@ provider:
 
 functions:
   update:
-    handler: handler.updateFiles
+    handler: handler.update
     timeout: 60
     events:
       - http:
           path: update
           method: put
+      - schedule: cron(5 * * * * *)
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
