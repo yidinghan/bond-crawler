@@ -1,5 +1,3 @@
-const Promise = require('bluebird');
-const fs = Promise.promisifyAll(require('fs'));
 const rq = require('request-promise');
 const cheerio = require('cheerio');
 const zipObject = require('lodash.zipobject');
@@ -7,6 +5,7 @@ const iconv = require('iconv-lite');
 
 const config = require('../config').szse;
 const toCsv = require('../to_csv');
+const upload = require('../upload');
 
 const getApiData = () => {
   const opts = {
@@ -76,6 +75,5 @@ exports.run = () =>
         translate: config.translate,
       });
 
-      return fs.writeFileAsync('szse.csv', csv);
-    })
-    .return(0);
+      return upload('sse.csv', csv);
+    });

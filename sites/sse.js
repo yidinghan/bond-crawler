@@ -1,9 +1,8 @@
-const Promise = require('bluebird');
-const fs = Promise.promisifyAll(require('fs'));
 const rq = require('request-promise');
 
 const config = require('../config').sse;
 const toCsv = require('../to_csv');
+const upload = require('../upload');
 
 const getApiData = () => {
   const opts = {
@@ -46,5 +45,5 @@ exports.run = () =>
       translate: config.translate,
     });
 
-    return fs.writeFileAsync('sse.csv', csv);
+    return upload('sse.csv', csv);
   });
