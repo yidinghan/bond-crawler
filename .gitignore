@@ -1,3 +1,6 @@
+# Serverless directories
+.serverless%
+
 # tmp files
 sse.csv
 szse.csv

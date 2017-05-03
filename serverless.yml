@@ -57,16 +57,17 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-package:
- include:
-   - index.js
-   - config.js
-   - package.json
-   - sites/**
-   - node_modules/**
+# package:
+#  include:
+#    - index.js
+#    - config.js
+#    - handler.js
+#    - package.json
+#    - sites/**
+#    - node_modules/**
 
 functions:
-  hello:
+  update:
     handler: handler.updateFiles
     events:
       - http:
