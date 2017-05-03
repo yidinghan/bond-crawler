@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/yidinghan/bond-crawler#readme",
   "dependencies": {
+    "aws-sdk": "^2.48.0",
     "bluebird": "^3.5.0",
     "cheerio": "^0.22.0",
     "ding-load-dir": "^1.1.1",

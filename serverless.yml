@@ -69,7 +69,7 @@ functions:
     handler: handler.updateFiles
     events:
       - http:
-          path: updateFiles
+          path: update
           method: put
 
 #    The following are a few example events you can configure
