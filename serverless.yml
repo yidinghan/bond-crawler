@@ -67,6 +67,12 @@ provider:
 #    - node_modules/**
 
 functions:
+  list:
+    handler: handler.list
+    events:
+      - http:
+          path: list
+          method: get
   update:
     handler: handler.update
     timeout: 60
