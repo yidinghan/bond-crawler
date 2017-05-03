@@ -32,6 +32,7 @@ provider:
         - "s3:ListBucket"
         - "s3:ListObject"
         - "s3:PutObject"
+        - "s3:PutObjectAcl"
         - "s3:GetObject"
       Resource:
         - "arn:aws:s3:::${self:custom.bucket_name}"
