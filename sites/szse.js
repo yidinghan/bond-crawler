@@ -29,6 +29,7 @@ const getApiData = () => {
 
       return cheerio.load(utf8String);
     },
+    timeout: 20 * 1000,
     encoding: null,
   };
 

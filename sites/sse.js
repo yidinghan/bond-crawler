@@ -18,6 +18,7 @@ const getApiData = () => {
     headers: {
       Referer: 'http://bond.sse.com.cn/bridge/information/',
     },
+    timeout: 20 * 1000,
     transform: body => JSON.parse(/{.*}/.exec(body)[0]),
   };
 
@@ -46,4 +47,4 @@ exports.run = () =>
     });
 
     return fs.writeFileAsync('sse.csv', csv);
-  }).return(0);
+  });

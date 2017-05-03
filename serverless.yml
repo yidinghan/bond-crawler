@@ -69,6 +69,7 @@ provider:
 functions:
   update:
     handler: handler.updateFiles
+    timeout: 60
     events:
       - http:
           path: update
