@@ -1,10 +1,12 @@
+const Promise = require('bluebird');
+
 const sites = require('./sites');
 
-const run = () =>
-  Promise.all([sites.sse.run(), sites.szse.run()]).catch(console.error).then(() => {
+exports.run = () =>
+  Promise.all([sites.sse.run(), sites.szse.run()]).then(() => {
     process.exit(0);
   });
 
 if (!module.parent) {
-  run();
+  exports.run();
 }
