@@ -105,12 +105,13 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-# resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: bond-crawler
+resources:
+ Resources:
+   NewResource:
+     Type: AWS::S3::Bucket
+     Properties:
+       BucketName: bond-crawler
+      #  AccessControl: PublicReadWrite
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"
