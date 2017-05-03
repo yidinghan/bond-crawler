@@ -75,5 +75,5 @@ exports.run = () =>
         translate: config.translate,
       });
 
-      return upload('sse.csv', csv);
+      return upload('szse.csv', csv);
     });
